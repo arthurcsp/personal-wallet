@@ -1,3 +1,7 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
-setup(name="src" , version="1.0" , packages=find_packages())
+setup(
+    name="wallet",
+    version="0.1",
+    packages=["wallet"],
+)
