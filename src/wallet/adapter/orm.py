@@ -1,7 +1,7 @@
 from sqlalchemy import Table, Column, Integer, String, ForeignKey, Float, DateTime
 from sqlalchemy.orm import registry
-from domain.models.movements import  Movements
-from domain.models.registers import Category, Account
+from wallet.domain.models.movements import  Movements
+from wallet.domain.models.registers import Category, Account
 
 mapper_registry = registry()
 

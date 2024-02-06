@@ -10,3 +10,7 @@ with engine.connect() as connection:
 
 
     print(result.all())
+
+
+def test_config():
+    assert True != True
