@@ -1,7 +1,7 @@
 from sqlalchemy import Table, Column, Integer, String, ForeignKey, Float, DateTime
 from sqlalchemy.orm import registry
-from wallet.domain.models.movements import  Movements
-from wallet.domain.models.registers import Category, Account
+from wallet.models.movements import  Movements
+from wallet.models.registers import Category, Account
 
 mapper_registry = registry()
 
@@ -40,4 +40,4 @@ movement_table = Table(
 def start_mapper():
     mapper_registry.map_imperatively(Category, category_table)
     mapper_registry.map_imperatively(Account , account_table)
-    mapper_registry.map_imperatively(Movements, movement_table )
+    mapper_registry.map_imperatively(Movements, movement_table)

@@ -1,5 +1,5 @@
 from datetime import datetime
-from wallet.domain.models.registers import Account, Category
+from wallet.models.registers import Account, Category
 
 class Movements:
     def __init__(self, account:Account, category:Category , amount : float , description : str , id:int = None):
