@@ -3,7 +3,7 @@ class Account:
           self.id = id
           self.name = name
           self.type = account_type
-          self.balance = initial_balance
+          self.initial_balance = initial_balance
 
 
 class Category:

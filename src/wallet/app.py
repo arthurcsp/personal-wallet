@@ -1,6 +1,6 @@
 import sys
 ##sys.path.append("C:\github\personal-wallet\src")
-from flask import Flask, jsonify, json
+from flask import Flask, jsonify, json, render_template, request, redirect
 from wallet.config import engine
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -17,10 +17,23 @@ start_mapper()
 def index():
     return "hello"
 
-@app.route('/accounts')
+@app.route('/accounts', methods=['POST' , 'GET'])
 def get_accounts():
-    accs = session.scalars(select(Account))
-    return json.dumps([ (row.id, row.name) for row in accs ])
+    if request.method == 'POST':
+        acc_name = request.form["name"]
+        acc_type = request.form["type"]
+        acc_balance = request.form["initial_balance"]
+        new_acc = Account(acc_name , acc_type, acc_balance)
+        try:
+            session.add(new_acc)
+            session.commit()
+            return redirect('/accounts')
+        except Exception as error:
+            session.rollback()
+            return str(error)
+    else:
+        accs = session.query(Account).all()
+        return render_template("accounts.html", accounts = accs)
 
 
 

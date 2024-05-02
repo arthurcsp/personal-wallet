@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Accounts Master</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center;">Accounts Master</h1>
+    {% if accounts|length < 1 %}
+    <h4 style="text-align: center;">No Account created! Please create a new one below!</h4>
+    {% else %}
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Initial Balance</th>
+        </tr>
+        {% for account in accounts%}
+        <tr>
+            <td>{{account.id}}</td>
+            <td>{{account.name}}</td>
+            <td>{{account.type}}</td>
+            <td>{{account.initial_balance}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+    <form action="/accounts" method="POST">
+        <label for="account_name"> Create Account: </label><br>
+        <label> name: </label>
+        <input name="name" type="text" maxlength="10"><br>
+        <label> type: </label>
+        <input name="type" type="text" maxlength="10"><br>
+        <label> initial balance: </label>
+        <input name="initial_balance" type="floatformat" maxlength="10"><br>
+        <input type="submit" value="Add Account">
+    </form>
+
+</div>
+{% endblock %}

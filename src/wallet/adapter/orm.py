@@ -18,9 +18,9 @@ account_table = Table(
     "account",
     mapper_registry.metadata,
     Column("id", Integer, primary_key=True),
-    Column("name", String(200)),
+    Column("name", String(200), unique=True),
     Column("type", String(200)),
-    Column("balance", Float)
+    Column("initial_balance", Float)
 )
 
 movement_table = Table(
